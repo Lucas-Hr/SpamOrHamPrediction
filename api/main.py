@@ -3,7 +3,7 @@ from pydantic import BaseModel
 import joblib
 import os
 from fastapi.middleware.cors import CORSMiddleware
-
+from pathlib import Path 
 app = FastAPI(title="Spam Detector API")
 
 # Configuration CORS pour autoriser Next.js (port 3000)
@@ -23,7 +23,12 @@ VEC_PATH = BASE_DIR / "vectorizer_fr.pkl"
 
 # Check if files exist using the absolute path
 if not MODEL_PATH.exists() or not VEC_PATH.exists():
-    raise RuntimeError("Les fichiers .pkl sont introuvables !")
+    import os
+    files_in_dir = os.listdir(BASE_DIR)
+    raise RuntimeError(
+        f"Fichiers introuvables! Chemin: {BASE_DIR}. "
+        f"Fichiers vus par Vercel: {files_in_dir}"
+    )
 model = joblib.load(MODEL_PATH)
 vectorizer = joblib.load(VEC_PATH)
 
@@ -34,7 +39,7 @@ class SMS(BaseModel):
 def health_check():
     return {"status": "ok"}
 
-@app.post("/api/predict")
+@app.post("/predict")
 async def predict_spam(sms: SMS):
     try:
         # Transformation du texte
