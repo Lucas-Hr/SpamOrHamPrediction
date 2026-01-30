@@ -6,20 +6,26 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Spam Detector API")
 
-# Configuration CORS pour autoriser Next.js (port 3000)
+# Configuration CORS pour autoriser Next.js (local et Vercel)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "https://*.vercel.app",  # Tous les domaines Vercel
+        "https://spam-or-ham-prediction.vercel.app",  # Remplacez par votre vrai domaine
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Chargement du modèle et du vectoriseur
-MODEL_PATH = "model_fr.pkl"
-VEC_PATH = "vectorizer_fr.pkl"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "model_fr.pkl")
+VEC_PATH = os.path.join(BASE_DIR, "vectorizer_fr.pkl")
 
 if not os.path.exists(MODEL_PATH) or not os.path.exists(VEC_PATH):
-    raise RuntimeError("Les fichiers .pkl sont introuvables !")
+    raise RuntimeError(f"Les fichiers .pkl sont introuvables! Cherchés: {MODEL_PATH}, {VEC_PATH}")
 
 model = joblib.load(MODEL_PATH)
 vectorizer = joblib.load(VEC_PATH)
