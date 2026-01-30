@@ -24,6 +24,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+*.pkl
+pickle/
 
 # dependencies
 /node_modules
