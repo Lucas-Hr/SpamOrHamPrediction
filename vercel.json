@@ -1,5 +1,5 @@
 {
     "rewrites": [
-        { "source": "/:path*", "destination": "/main.py" }
+        { "source": "/backend/:path*", "destination": "/backend/main.py" }
     ]
 }
