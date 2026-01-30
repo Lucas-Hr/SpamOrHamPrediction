@@ -4,10 +4,15 @@ Site web : [www.ispm-edu.com]
 
 ## Membres du groupe
 **ESIIA5** RABEANTOANDRO Mirantsoa Adrianna
+
 **ESIIA5** RAKOTOHARIMALALA Ny Hasina Sedera - recherche du dataset français et de l'architecture du modèle adapté
+
 **ESIIA5** RAKOTOMALALA Nirinifitiavana Sarobidy - recherche du dataset Malagasy
-**ESIIA5** RANDRIAMIARISOA Henintsoa Lucas - création de l'application web 
+
+**ESIIA5** RANDRIAMIARISOA Henintsoa Lucas - création de l'application web
+
 **IMTICIA5** RASOLONJATOVO Soatiana Andrianina - recherche du dataset français et de l'architecture du modèle adapté
+
 **ESIIA5** RAZAIARIMIHAJASOA Tsantaniony Fankasitrahana
 
 ## Stack technologique
