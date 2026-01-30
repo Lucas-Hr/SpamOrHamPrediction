@@ -140,7 +140,7 @@ curl -X POST http://localhost:3000/api/predict \
 ```bash
 git add .
 git commit -m "fix: liaison frontend-backend avec Railway"
-git push origin backendSetup
+git push origin backendSetup-2
 ```
 
 ### Étape 2: Créer compte Railway (1 min)
@@ -177,7 +177,7 @@ git push origin backendSetup
    ```bash
    git add api/main.py
    git commit -m "update: CORS pour Vercel"
-   git push origin backendSetup
+   git push origin backendSetup-2
    ```
 3. Railway redéploie automatiquement
 
@@ -258,5 +258,5 @@ TOTAL:              $0/mois (1er mois)
 ---
 
 *Configuration Railway - 30 Janvier 2026*  
-*Branche: backendSetup*  
+*Branche: backendSetup-2*  
 *État: ✅ PRÊT POUR PRODUCTION*
