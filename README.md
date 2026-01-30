@@ -1,5 +1,6 @@
 # Traitement Automatique de Langage Naturel
 Institut d'enseignement : **ISPM – Institut Supérieur Polytechnique de Madagascar**
+
 Site web : [www.ispm-edu.com]
 
 ## Membres du groupe
@@ -23,11 +24,36 @@ L'application web est créé en [Next.js] et le backend en [FastAPI].
 ## Méthodes ML
 
 ## Datasets utilisés
-Dataset français :
-Dataset malagasy :
+Le projet utilise une approche multilingue basée sur deux jeux de données distincts pour assurer une détection robuste en français et en malgache.
+
+### A. Dataset Français (FR) 
+
+Le jeu de données francophone a été constitué pour couvrir les spécificités des SMS modernes.
+
+
+**Source** : Mélange de données issues de sources « open » (internet, Kaggle, Hugging Face) et de messages générés pour équilibrer les classes.
+
+
+**Contenu** : Messages courts variés incluant des promotions, des notifications de service (SPAM) et des échanges personnels (HAM).
+
+
+**Prétraitement** : Nettoyage des caractères spéciaux, suppression des "Stop Words" et normalisation du texte pour l'entraînement du modèle Python.
+
+### B. Dataset Malgache (MG) - Bonus 
+
+Conformément aux objectifs bonus du hackathon, un dataset spécifique à la langue malgache a été intégré.
+
+
+**Méthode de collecte** : Création et annotation par l'équipe pour capturer les expressions locales et le "texting" en malgache.
+
+
+**Spécificités** : Prise en compte des variations dialectales courantes dans les SMS à Madagascar et des mots-clés typiques des arnaques locales.
+
+
+**Annotation** : Chaque message a été labellisé avec rigueur par l'équipe pour garantir un score de confiance élevé lors de la prédiction.
 
 ## Hébergement de l'application web
-Lien URL : []
+Lien URL : [https://spam-or-ham-prediction.vercel.app/]
 
 
 
