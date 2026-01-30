@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 const Table = () => {
   // Initializing state with some dummy data

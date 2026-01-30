@@ -8,16 +8,20 @@ import Result from "@/components/result";
 import Image from "next/image";
 export default function Home() {
   const [isVisible , setIsVisible] = useState<boolean>(false);
+  const [prediction , setPrediction] = useState<string>("");
+  const [precisionHam , setPrecisionHam] = useState<number>(0);
+  const [precisionSpam , setPrecisionSpam] = useState<number>(0);
   return (
     <div className="px-10 py-10 ">
-        {isVisible && <Result classification="Ham" precision={0.85} setIsVisible={setIsVisible}/>}
+        {isVisible && <Result prediction={prediction} precisionHam={precisionHam} precisionSpam={precisionSpam} setIsVisible={setIsVisible}/>}
         <div className="flex items-center gap-4">
          <Image src="/messageicon.png" alt="Spam or Ham" className="w-10" width={200} height={200} />
           <h1 className="text-3xl font-semibold">SPAM OU HAM?</h1>
         </div>
+        Lien github : https://github.com/Lucas-Hr/SpamOrHamPrediction.git
       <div className="flex gap-4   mt-8">
         <div className="flex flex-col justify-between ">
-          <InputMessage setIsVisible={setIsVisible} />
+          <InputMessage setIsVisible={setIsVisible} setPrediction={setPrediction} setPrecisionHam={setPrecisionHam} setPrecisionSpam={setPrecisionSpam} />
           <div className="flex items-start gap-4">
             <Table />
             <DoughnutChart spam={12} ham={3}/>  
