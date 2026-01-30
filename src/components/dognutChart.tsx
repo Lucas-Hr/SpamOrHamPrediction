@@ -48,8 +48,8 @@ const DoughnutChart = ({spam , ham} : DoughnutChartProps) => {
   } as const;
 
   return (
-     <div className="px-10 rounded-lg shadow-md border border-gray-200 py-8">
-      <Doughnut data={data} options={options} />
+     <div className="bg-white px-10 rounded-lg shadow-md border border-gray-200 py-8 h-75">
+      <Doughnut data={data} options={options}  />
     </div>
   );
 };
