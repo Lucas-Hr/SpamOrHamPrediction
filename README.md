@@ -4,17 +4,17 @@ Institut : **ISPM – Institut Supérieur Polytechnique de Madagascar**
 Site web : [www.ispm-edu.com]
 
 ## Membres du groupe
-**ESIIA5** RABEANTOANDRO Mirantsoa Adrianna - création du dataset malagasy et de l'architecture du modèle adapté
+**ESIIA5** | RABEANTOANDRO Mirantsoa Adrianna - création du dataset malagasy et de l'architecture du modèle adapté
 
-**ESIIA5** RAKOTOHARIMALALA Ny Hasina Sedera - recherche du dataset français et de l'architecture du modèle adapté
+**ESIIA5** | RAKOTOHARIMALALA Ny Hasina Sedera - recherche du dataset français et de l'architecture du modèle adapté
 
-**ESIIA5** RAKOTOMALALA Nirinifitiavana Sarobidy - recherche du dataset Malagasy et du côté backend FastAPI
+**ESIIA5** | RAKOTOMALALA Nirinifitiavana Sarobidy - recherche du dataset Malagasy et du côté backend FastAPI
 
-**ESIIA5** RANDRIAMIARISOA Henintsoa Lucas - création de l'application web et déploiement du projet
+**ESIIA5** | RANDRIAMIARISOA Henintsoa Lucas - création de l'application web et déploiement du projet
 
-**IMTICIA5** RASOLONJATOVO Soatiana Andrianina - recherche du dataset français et de l'architecture du modèle adapté
+**IMTICIA5** | RASOLONJATOVO Soatiana Andrianina - recherche du dataset français et de l'architecture du modèle adapté
 
-**ESIIA5** RAZAIARIMIHAJASOA Tsantaniony Fankasitrahana - création du dataset malagasy et du dataset français
+**ESIIA5** | RAZAIARIMIHAJASOA Tsantaniony Fankasitrahana - création du dataset malagasy et du dataset français
 
 ## Stack technologique
 Pour répondre aux exigences de performance et de déploiement moderne, nous avons opté pour une architecture découplée (Decoupled Architecture) :
