@@ -11,7 +11,7 @@ export default function InputMessage({setIsVisible, setPrediction, setPrecisionH
   const [message , setMessage] = useState<string>("");
   const predict = async () => {
     
-    const res = await fetch('https://spam-or-ham-prediction.vercel.app/backend/predict', {
+    const res = await fetch('/backend/predict', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
