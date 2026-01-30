@@ -27,7 +27,11 @@ vectorizer = joblib.load(VEC_PATH)
 class SMS(BaseModel):
     text: str
 
-@app.post("/predict")
+@app.get("/api/health")
+def health_check():
+    return {"status": "ok"}
+
+@app.post("/api/predict")
 async def predict_spam(sms: SMS):
     try:
         # Transformation du texte
