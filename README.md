@@ -1,23 +1,43 @@
 # Traitement Automatique de Langage Naturel
-Institut d'enseignement : **ISPM – Institut Supérieur Polytechnique de Madagascar**
+Institut : **ISPM – Institut Supérieur Polytechnique de Madagascar**
 
 Site web : [www.ispm-edu.com]
 
 ## Membres du groupe
-**ESIIA5** RABEANTOANDRO Mirantsoa Adrianna
+**ESIIA5** RABEANTOANDRO Mirantsoa Adrianna - création du dataset malagasy et de l'architecture du modèle adapté
 
 **ESIIA5** RAKOTOHARIMALALA Ny Hasina Sedera - recherche du dataset français et de l'architecture du modèle adapté
 
-**ESIIA5** RAKOTOMALALA Nirinifitiavana Sarobidy - recherche du dataset Malagasy
+**ESIIA5** RAKOTOMALALA Nirinifitiavana Sarobidy - recherche du dataset Malagasy et du côté backend FastAPI
 
-**ESIIA5** RANDRIAMIARISOA Henintsoa Lucas - création de l'application web
+**ESIIA5** RANDRIAMIARISOA Henintsoa Lucas - création de l'application web et déploiement du projet
 
 **IMTICIA5** RASOLONJATOVO Soatiana Andrianina - recherche du dataset français et de l'architecture du modèle adapté
 
-**ESIIA5** RAZAIARIMIHAJASOA Tsantaniony Fankasitrahana
+**ESIIA5** RAZAIARIMIHAJASOA Tsantaniony Fankasitrahana - création du dataset malagasy et du dataset français
 
 ## Stack technologique
-L'application web est créé en [Next.js] et le backend en [FastAPI].
+Pour répondre aux exigences de performance et de déploiement moderne, nous avons opté pour une architecture découplée (Decoupled Architecture) :
+
+### 1. Machine Learning
+La partie intelligence artificielle est entièrement implémentée en Python, en utilisant les bibliothèques suivantes :
+
+**Scikit-Learn** : Utilisation pour la création des pipelines de classification, les modèles SVM et Naive Bayes, ainsi que pour les outils d'évaluation (Accuracy, F1-score).
+
+**Pandas & NumPy** : Pour la manipulation, le nettoyage et la structuration des données d'entraînement.
+
+**Joblib / Pickle** : Pour la sérialisation et la sauvegarde des modèles entraînés afin de les rendre réutilisables en production.
+
+### 2. Développement Backend
+**FastAPI** : Framework Python haute performance utilisé pour créer l'API de prédiction. Il permet une validation automatique des données et une génération rapide des scores de confiance.
+
+### 3. Interface Utilisateur (Frontend)
+**Next.js** : Framework React utilisé pour construire une interface web fluide, réactive et optimisée pour l'utilisateur final.
+
+### 4. Déploiement et Hébergement
+**Vercel** : Plateforme choisie pour l'hébergement de l'application web et de l'API. Elle garantit une URL publique fonctionnelle accessible au moment de l'évaluation.
+
+**GitHub** : Utilisé pour le versionnage du code source et la gestion des commits.
 
 ## Modèle prédictif et processus de traitement des données
 Le projet suit deux pipelines distincts pour s'adapter aux particularités linguistiques de chaque dataset.
