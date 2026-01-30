@@ -9,18 +9,21 @@ app = FastAPI(title="Spam Detector API")
 # Configuration CORS pour autoriser Next.js (port 3000)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Chargement du modèle et du vectoriseur
-MODEL_PATH = "model_fr.pkl"
-VEC_PATH = "vectorizer_fr.pkl"
+# Get the absolute path to the directory containing main.py
+BASE_DIR = Path(__file__).resolve().parent
 
-if not os.path.exists(MODEL_PATH) or not os.path.exists(VEC_PATH):
+MODEL_PATH = BASE_DIR / "model_fr.pkl"
+VEC_PATH = BASE_DIR / "vectorizer_fr.pkl"
+
+# Check if files exist using the absolute path
+if not MODEL_PATH.exists() or not VEC_PATH.exists():
     raise RuntimeError("Les fichiers .pkl sont introuvables !")
-
 model = joblib.load(MODEL_PATH)
 vectorizer = joblib.load(VEC_PATH)
 
