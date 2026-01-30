@@ -24,8 +24,11 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-*.pkl
-pickle/
+
+# ML Models - ignore training models ONLY (keep production models)
+train/pickle/
+!api/model_fr.pkl
+!api/vectorizer_fr.pkl
 
 # dependencies
 /node_modules
