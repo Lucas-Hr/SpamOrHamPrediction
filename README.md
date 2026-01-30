@@ -1,3 +1,28 @@
+# Traitement Automatique de Langage Naturel
+Institut d'enseignement : **ISPM – Institut Supérieur Polytechnique de Madagascar**
+Site web : [www.ispm-edu.com]
+
+## Membres du groupe
+**ESIIA5** RABEANTOANDRO Mirantsoa Adrianna
+**ESIIA5** RAKOTOHARIMALALA Ny Hasina Sedera
+**ESIIA5** RAKOTOMALALA Nirinifitiavana Sarobidy
+**ESIIA5** RANDRIAMIARISOA Henintsoa Lucas
+**IMTICIA5** RASOLONJATOVO Soatiana Andrianina
+**ESIIA5** RAZAIARIMIHAJASOA Tsantaniony Fankasitrahana
+
+## Stack technologique
+
+## Modèle prédictif et processus de traitement des données
+
+## Méthodes ML
+
+## Datasets utilisés
+
+## Hébergement de l'application web
+Lien URL : []
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
