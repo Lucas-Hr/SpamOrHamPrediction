@@ -11,7 +11,7 @@ export default function InputMessage({setIsVisible, setPrediction, setPrecisionH
   const [message , setMessage] = useState<string>("");
   const predict = async () => {
     
-    const res = await fetch('/backend/predict', {
+    const res = await fetch('/api/predict', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
