@@ -33,6 +33,21 @@ vectorizer = joblib.load(VEC_PATH)
 class SMS(BaseModel):
     text: str
 
+@app.get("/")
+async def root():
+    return {
+        "status": "ok",
+        "message": "Spam Detection API is running",
+        "version": "1.0"
+    }
+
+@app.get("/health")
+async def health():
+    return {
+        "status": "healthy",
+        "models_loaded": True
+    }
+
 @app.post("/predict")
 async def predict_spam(sms: SMS):
     try:

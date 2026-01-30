@@ -1,5 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export async function GET() {
+  return NextResponse.json({
+    status: 'ok',
+    message: 'API Endpoint is working',
+    backendUrl: process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000'
+  });
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
