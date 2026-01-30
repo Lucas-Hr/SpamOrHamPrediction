@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react"
+import { useState } from "react";
 type InputMessageProps = {
   setIsVisible: (isVisible: boolean) => void;
   setPrediction: (prediction: string) => void;
@@ -11,7 +11,7 @@ export default function InputMessage({setIsVisible, setPrediction, setPrecisionH
   const [message , setMessage] = useState<string>("");
   const predict = async () => {
     
-    const res = await fetch('http://localhost:8000/predict', {
+    const res = await fetch('https://spam-or-ham-prediction.vercel.app/predict', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
