@@ -8,7 +8,7 @@ Site web : [www.ispm-edu.com]
 
 **ESIIA5** | RAKOTOHARIMALALA Ny Hasina Sedera - recherche du dataset français et de l'architecture du modèle adapté
 
-**ESIIA5** | RAKOTOMALALA Nirinifitiavana Sarobidy - recherche du dataset Malagasy et du côté backend FastAPI
+**ESIIA5** | RAKOTOMALALA Nirinifitiavana Sarobidy - recherche du dataset Malagasy et du côté backend Python
 
 **ESIIA5** | RANDRIAMIARISOA Henintsoa Lucas - création de l'application web et déploiement du projet
 
@@ -29,7 +29,12 @@ La partie intelligence artificielle est entièrement implémentée en Python, en
 **Joblib / Pickle** : Pour la sérialisation et la sauvegarde des modèles entraînés afin de les rendre réutilisables en production.
 
 ### 2. Développement Backend
-**FastAPI** : Framework Python haute performance utilisé pour créer l'API de prédiction. Il permet une validation automatique des données et une génération rapide des scores de confiance.
+**Python Serverless Functions** : Déploiement sur Vercel utilisant des fonctions Python serverless (BaseHTTPRequestHandler) pour créer l'API de prédiction. Les endpoints `/api/predict` et `/api/health` traitent les requêtes HTTP en temps réel sans gestion de serveur.
+
+**Dépendances Backend** : 
+- `joblib` : Pour le chargement des modèles pré-entraînés (.pkl)
+- `scikit-learn` : Bibliothèque d'apprentissage automatique utilisée lors de l'entraînement
+- `pandas` & `numpy` : Utilisées lors du prétraitement des données d'entraînement
 
 ### 3. Interface Utilisateur (Frontend)
 **Next.js** : Framework React utilisé pour construire une interface web fluide, réactive et optimisée pour l'utilisateur final.

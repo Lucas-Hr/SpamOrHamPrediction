@@ -1,8 +1,9 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/main.py"
+  "functions": {
+    "api/**/*.py": {
+      "runtime": "python3.11"
     }
-  ]
+  },
+  "buildCommand": "pip install -r requirements.txt && npm run build",
+  "outputDirectory": ".next"
 }

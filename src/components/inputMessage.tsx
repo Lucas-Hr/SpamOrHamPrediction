@@ -10,20 +10,30 @@ type InputMessageProps = {
 export default function InputMessage({setIsVisible, setPrediction, setPrecisionHam, setPrecisionSpam}: InputMessageProps) {
   const [message , setMessage] = useState<string>("");
   const predict = async () => {
-    
-    const res = await fetch('/api/predict', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ text: message }),
-    });
-    setIsVisible(true);
-    const data = await res.json();
-    console.log(data);
-    setPrediction(data.prediction);
-    setPrecisionHam(data.probabilities.ham);
-    setPrecisionSpam(data.probabilities.spam);
+    try {
+      const res = await fetch('/api/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: message }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Erreur: ${res.status}`);
+      }
+
+      const data = await res.json();
+      console.log(data);
+      
+      setIsVisible(true);
+      setPrediction(data.prediction);
+      setPrecisionHam(data.probabilities.ham);
+      setPrecisionSpam(data.probabilities.spam);
+    } catch (error) {
+      console.error('Erreur prédiction:', error);
+      alert('Erreur connexion API');
+    }
   }
   return (
     <div className="bg-white px-10 rounded-lg shadow-md border border-gray-200 py-8 ">
