@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-const BACKEND_URL = process.env.BACKEND_URL || "https://votre-backend.up.railway.app";
+const BACKEND_URL = process.env.BACKEND_URL || "https://backendspamorham.up.railway.app";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
