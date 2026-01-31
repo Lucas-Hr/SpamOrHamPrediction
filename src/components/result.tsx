@@ -13,7 +13,7 @@ export default function Result({prediction, precisionHam, precisionSpam,confiden
       <span className="absolute top-4 right-4 text-gray-500 cursor-pointer"
       onClick={() => setIsVisible(false)}
       >&times;</span>
-      <h2 className="text-2xl font-semibold text-center">{precisionSpam>precisionHam ? "Spam" : "Ham"}</h2>
+      <h2 className="text-2xl font-semibold text-center">{(precisionSpam ?? 0) > (precisionHam ?? 0) ? "Spam" : "Ham"}</h2>
       <p className="text-center text-gray-500 text-extralight mt-4">Probabilité Ham</p>
       <AnimatedCircularProgressBar
         value={(precisionHam ?? 0) * 100 || 20}
