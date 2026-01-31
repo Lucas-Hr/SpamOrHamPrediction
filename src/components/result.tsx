@@ -28,8 +28,8 @@ export default function Result({prediction, precisionHam, precisionSpam,confiden
       />
       <p className="text-center text-gray-500 text-extralight mt-4">Pourcentage de confiance</p>
       <AnimatedCircularProgressBar
-        value={(confidence ?? 0) * 100 || 20}
-        gaugePrimaryColor="rgba(255, 107, 107, 1)"
+        value={(confidence ?? 0) || 20}
+        gaugePrimaryColor="rgba(255, 249, 62, 1)"
         gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
       />
     </div>
