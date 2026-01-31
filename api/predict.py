@@ -1,8 +1,6 @@
 import json
 import joblib
 from pathlib import Path
-from http.server import HTTPServer, BaseHTTPRequestHandler
-import threading
 
 # Charger modèles une seule fois au démarrage
 BASE_DIR = Path(__file__).resolve().parent
@@ -14,58 +12,34 @@ except FileNotFoundError as e:
     raise RuntimeError(f"Modèles introuvables: {e}")
 
 
-def handler(request):
-    """Fonction handler Vercel-compatible"""
-    
-    # Récupérer la méthode et le chemin
-    method = request.method
-    path = request.path if hasattr(request, 'path') else request.get('path', '')
+def handler(req, res):
+    """Vercel Serverless Function - Predict endpoint"""
     
     # CORS headers
-    headers = {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-    }
+    res.headers['Access-Control-Allow-Origin'] = '*'
+    res.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    res.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     
     # OPTIONS request
-    if method == 'OPTIONS':
-        return {
-            'statusCode': 200,
-            'headers': headers,
-            'body': ''
-        }
+    if req.method == 'OPTIONS':
+        return res.status(200).end()
     
     # Health check
-    if method == 'GET' and path == '/api/health':
-        response = {
+    if req.method == 'GET' and req.path == '/api/health':
+        return res.status(200).json({
             'status': 'ok',
             'service': 'Spam Detector API'
-        }
-        return {
-            'statusCode': 200,
-            'headers': headers,
-            'body': json.dumps(response)
-        }
+        })
     
     # Prediction endpoint
-    if method == 'POST' and path == '/api/predict':
+    if req.method == 'POST' and req.path == '/api/predict':
         try:
             # Parse body
-            body = request.get('body', '{}')
-            if isinstance(body, bytes):
-                body = body.decode('utf-8')
-            
-            data = json.loads(body)
-            text = data.get('text', '')
+            body = req.body if isinstance(req.body, dict) else {}
+            text = body.get('text', '')
             
             if not text:
-                return {
-                    'statusCode': 400,
-                    'headers': headers,
-                    'body': json.dumps({'error': 'Text required'})
-                }
+                return res.status(400).json({'error': 'Text required'})
             
             # Vectorize
             vectorized = vectorizer.transform([text])
@@ -76,31 +50,17 @@ def handler(request):
             classes = model.classes_.tolist()
             
             # Response
-            response = {
+            return res.status(200).json({
                 'prediction': str(prediction),
                 'confidence': round(float(max(probs)) * 100, 2),
                 'probabilities': {
                     classes[0]: round(float(probs[0]), 4),
                     classes[1]: round(float(probs[1]), 4)
                 }
-            }
-            
-            return {
-                'statusCode': 200,
-                'headers': headers,
-                'body': json.dumps(response)
-            }
+            })
             
         except Exception as e:
-            return {
-                'statusCode': 500,
-                'headers': headers,
-                'body': json.dumps({'error': str(e)})
-            }
+            return res.status(500).json({'error': str(e)})
     
     # 404
-    return {
-        'statusCode': 404,
-        'headers': headers,
-        'body': json.dumps({'error': 'Not found'})
-    }
+    return res.status(404).json({'error': 'Not found'})

@@ -1,39 +1,24 @@
 import json
 
 
-def handler(request):
-    """Health check endpoint - Vercel compatible"""
+def handler(req, res):
+    """Vercel Serverless Function - Health check"""
     
-    headers = {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-    }
+    # CORS headers
+    res.headers['Access-Control-Allow-Origin'] = '*'
+    res.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+    res.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     
     # OPTIONS request
-    if request.method == 'OPTIONS':
-        return {
-            'statusCode': 200,
-            'headers': headers,
-            'body': ''
-        }
+    if req.method == 'OPTIONS':
+        return res.status(200).end()
     
     # GET request
-    if request.method == 'GET':
-        response = {
+    if req.method == 'GET':
+        return res.status(200).json({
             'status': 'ok',
             'service': 'Spam Detector API'
-        }
-        return {
-            'statusCode': 200,
-            'headers': headers,
-            'body': json.dumps(response)
-        }
+        })
     
     # 404
-    return {
-        'statusCode': 404,
-        'headers': headers,
-        'body': json.dumps({'error': 'Not found'})
-    }
+    return res.status(404).json({'error': 'Not found'})
