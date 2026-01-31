@@ -1,17 +1,39 @@
-from http.server import BaseHTTPRequestHandler
 import json
 
-class handler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.end_headers()
-        self.wfile.write(json.dumps({"status": "ok", "service": "Spam Detector API"}).encode('utf-8'))
+
+def handler(request):
+    """Health check endpoint - Vercel compatible"""
     
-    def do_OPTIONS(self):
-        self.send_response(200)
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
-        self.end_headers()
+    headers = {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type'
+    }
+    
+    # OPTIONS request
+    if request.method == 'OPTIONS':
+        return {
+            'statusCode': 200,
+            'headers': headers,
+            'body': ''
+        }
+    
+    # GET request
+    if request.method == 'GET':
+        response = {
+            'status': 'ok',
+            'service': 'Spam Detector API'
+        }
+        return {
+            'statusCode': 200,
+            'headers': headers,
+            'body': json.dumps(response)
+        }
+    
+    # 404
+    return {
+        'statusCode': 404,
+        'headers': headers,
+        'body': json.dumps({'error': 'Not found'})
+    }
