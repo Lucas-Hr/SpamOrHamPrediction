@@ -8,20 +8,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  const { text } = req.body;
-  if (!text) {
-    return res.status(400).json({ error: 'Texte manquant' });
-  }
-
   try {
+    const { text } = req.body;
+    if (!text) {
+      return res.status(400).json({ error: 'Texte manquant' });
+    }
+
     const response = await fetch(`${BACKEND_URL}/predict`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text }),
     });
+
+    if (!response.ok) {
+      // Si Railway répond une erreur, on la transmet à Vercel pour débugger
+      const errorData = await response.text();
+      return res.status(response.status).json({ error: 'Railway Error', details: errorData });
+    }
+
     const data = await response.json();
-    res.status(response.status).json(data);
-  } catch (error) {
-    res.status(500).json({ error: 'Erreur de connexion au backend Python' });
+    return res.status(200).json(data);
+  } catch (error: any) {
+    return res.status(500).json({ error: 'Erreur de connexion au backend Python', details: error.message });
   }
 }
