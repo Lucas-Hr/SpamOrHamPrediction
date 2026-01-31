@@ -5,9 +5,10 @@ type InputMessageProps = {
   setPrediction: (prediction: string) => void;
   setPrecisionHam: (precisionHam: number) => void;
   setPrecisionSpam: (precisionSpam: number) => void;
+  setConfidence: (confidence: number) => void;
 }
 
-export default function InputMessage({setIsVisible, setPrediction, setPrecisionHam, setPrecisionSpam}: InputMessageProps) {
+export default function InputMessage({setIsVisible, setPrediction, setPrecisionHam, setPrecisionSpam, setConfidence}: InputMessageProps) {
   const [message , setMessage] = useState<string>("");
   const predict = async () => {
     try {
@@ -30,6 +31,7 @@ export default function InputMessage({setIsVisible, setPrediction, setPrecisionH
       setPrediction(data.prediction);
       setPrecisionHam(data.probabilities.ham);
       setPrecisionSpam(data.probabilities.spam);
+      setConfidence(data.confidence);
     } catch (error) {
       console.error('Erreur prédiction:', error);
       alert('Erreur connexion API');
