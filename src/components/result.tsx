@@ -16,7 +16,7 @@ export default function Result({prediction, precisionHam, precisionSpam,confiden
       <h2 className="text-2xl font-semibold text-center">{(precisionSpam ?? 0) > (precisionHam ?? 0) ? "Spam" : "Ham"}</h2>
       <div className="flex justify-between items-center mt-4 gap-8">
         <div>
-              <p className="text-center text-gray-500 text-extralight">Probabilité Ham</p>
+              <p className="text-center text-gray-500 text-extralight mb-4">Probabilité Ham</p>
             <AnimatedCircularProgressBar
               value={(precisionHam ?? 0) * 100 || 20}
               gaugePrimaryColor="rgba(62, 178, 255, 1)"
@@ -25,7 +25,7 @@ export default function Result({prediction, precisionHam, precisionSpam,confiden
         </div>
         <div>
         
-      <p className="text-center text-gray-500 text-extralight">Probabilité Spam</p>
+      <p className="text-center text-gray-500 text-extralight mb-4">Probabilité Spam</p>
       <AnimatedCircularProgressBar
         value={(precisionSpam ?? 0) * 100 || 20}
         gaugePrimaryColor="rgba(255, 107, 107, 1)"
@@ -34,7 +34,7 @@ export default function Result({prediction, precisionHam, precisionSpam,confiden
         </div>
         <div>
         
-      <p className="text-center text-gray-500 text-extralight">Pourcentage de confiance</p>
+      <p className="text-center text-gray-500 text-extralight mb-4">Pourcentage de confiance</p>
       <AnimatedCircularProgressBar
         value={(confidence ?? 0) || 20}
         gaugePrimaryColor="rgba(255, 249, 62, 1)"
